@@ -25,6 +25,14 @@ function displayDie(value){
     document.querySelector('#content').appendChild(face)
 }
 
+function clearBoard(){
+    let face = document.querySelector('img')
+    // face.src = `../images/Dice${value}.png`
+    if(face.style.border === ''){
+        face.remove()
+    }
+}
+
 document.querySelector('#first-roll').addEventListener('click', () => {
     document.querySelector('#content').innerHTML = ''
     board = []
@@ -37,5 +45,12 @@ document.querySelector('#first-roll').addEventListener('click', () => {
 })
 
 document.querySelector('#roll-again').addEventListener('click', ()=>{
-    let availableDice = hand.length - 5
+    // let availableDice = 5 - hand.length
+    board = []
+    clearBoard()
+    for(let i = 0; i < 5 - hand.length; i++){
+        let value = rollDie()
+        board.push(value)
+    }
+    console.log(board)
 })
