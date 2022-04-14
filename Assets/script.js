@@ -13,24 +13,25 @@ function displayDie(value){
     face.addEventListener('click', () => {
         if(face.style.border === '1px solid red') {
             face.style.border = ''
-            hand.pop()
-            console.log(hand)
-            // hand.splice(value, hand.length)
+            // hand.pop()
+            hand.splice(hand.indexOf(value), 1)
         } else {
             face.style.border = '1px solid red'
             hand.push(value)
-            console.log(hand)
         }
+        console.log(hand)
     })
     document.querySelector('#content').appendChild(face)
 }
 
 function clearBoard(){
-    let face = document.querySelector('img')
+    let faces = document.querySelectorAll('img')
     // face.src = `../images/Dice${value}.png`
-    if(face.style.border === ''){
-        face.remove()
-    }
+    faces.forEach((face)=>{
+        if(face.style.border === ''){
+            face.remove()
+        }
+    })
 }
 
 document.querySelector('#first-roll').addEventListener('click', () => {
