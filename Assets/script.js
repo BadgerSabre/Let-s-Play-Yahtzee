@@ -124,7 +124,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    rollCount++
+    // rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
@@ -136,16 +136,18 @@ document.querySelector('#score-points').addEventListener('click', ()=>{
     checkLargeStraight(hand)
     checkFullHouse(hand)
     checkSmallStraight(hand)
+    checkYahtzee(hand)
 })
 
-// Check Large Straight
-function arrayEquals(hand, largeStraight) {
+// Comparative Arrays Helper Function
+function arrayEquals(hand, value) {
     return Array.isArray(hand) &&
-        Array.isArray(largeStraight) &&
-        hand.length === largeStraight.length &&
-        hand.every((val, index) => val === largeStraight[index]);
+    Array.isArray(value) &&
+    hand.length === value.length &&
+    hand.every((val, index) => val === value[index]);
 }
 
+// Check Large Straight
 function checkLargeStraight(hand) {
     let largeStraight1 = [1,2,3,4,5]
     let largeStraight2 = [2,3,4,5,6]
@@ -172,4 +174,21 @@ function checkSmallStraight(hand) {
     } else if (hand.includes(3) && hand.includes(4) && hand.includes(5) && hand.includes(6)) {
         console.log('You got a Small Straight')
     }
+}
+
+// Check Yahtzee
+function checkYahtzee(hand) {
+    let yahtzees = [
+        [1,1,1,1,1],
+        [2,2,2,2,2],
+        [3,3,3,3,3],
+        [4,4,4,4,4],
+        [5,5,5,5,5],
+        [6,6,6,6,6]
+    ]
+    yahtzees.forEach(yahtzee => {
+        if(arrayEquals(hand, yahtzee)){
+            console.log('You got a Yahtzee')
+        }
+    })
 }
