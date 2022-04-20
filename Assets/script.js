@@ -1,6 +1,7 @@
 // Variables
 let board = []
 let hand = []
+let rollCount = 0
 
 const scoreCardUpperSection = [
     {
@@ -81,6 +82,7 @@ function displayDie(value){
     document.querySelector('#content').appendChild(face)
 }
 
+// Clears Unclaimed Die After Roll Again
 function clearBoard(){
     let faces = document.querySelectorAll('img')
     faces.forEach((face)=>{
@@ -100,6 +102,7 @@ document.querySelector('#first-roll').addEventListener('click', () => {
         board.push(value)
     }
     console.log(board)
+    document.querySelector('#roll-again').disabled = false
 })
 
 // Roll Again Button
@@ -111,6 +114,11 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
+    rollCount++
+    if(rollCount > 1){
+        document.querySelector('#roll-again').disabled = true
+    }
+    console.log(rollCount)
 })
 
 
