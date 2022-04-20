@@ -3,6 +3,7 @@ let board = []
 let hand = []
 let rollCount = 0
 let sum = 0
+let playerScore = 0
 
 const scoreCardUpperSection = [
     {
@@ -82,7 +83,7 @@ function displayDie(value){
             hand.push(value)
         }
         hand.sort()
-        // console.log(hand)
+        console.log(hand)
         const sum = hand.reduce((a,b)=> a + b)
         console.log(sum)
         return sum
@@ -133,8 +134,10 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
 // Check Score Button
 document.querySelector('#score-points').addEventListener('click', ()=>{
     checkLargeStraight(hand)
+    checkFullHouse(hand)
 })
 
+// Check Large Straight
 function arrayEquals(hand, largeStraight) {
     return Array.isArray(hand) &&
         Array.isArray(largeStraight) &&
@@ -142,18 +145,24 @@ function arrayEquals(hand, largeStraight) {
         hand.every((val, index) => val === largeStraight[index]);
 }
 
-function checkLargeStraight(hand){
+function checkLargeStraight(hand) {
     let largeStraight1 = [1,2,3,4,5]
     let largeStraight2 = [2,3,4,5,6]
     if(arrayEquals(hand, largeStraight1) || arrayEquals(hand, largeStraight2)) {
-        console.log('You win')
+        console.log('You got a Large Straight')
     }
 }
 
-// if(i = i++){
-    
-// }
+// Check Full House
+function checkFullHouse(hand) {
+    let arr1 = hand.filter(num => num === hand[0])
+    let arr2 = hand.filter(num => num === hand[4])
+    if(arr1.length === 2 && arr2.length === 3 || arr1.length === 3 && arr2.length === 2){
+        console.log('You got a FullHouse')
+    }
+}
 
-// if(hand = [1,2,3,4,5] || [2,3,4,5,6]){
-    
-// }
+// Check Small Straight
+function checkSmallStraight(hand) {
+
+}
