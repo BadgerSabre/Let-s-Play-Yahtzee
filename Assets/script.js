@@ -124,7 +124,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    rollCount++
+    // rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
@@ -135,6 +135,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
 document.querySelector('#score-points').addEventListener('click', ()=>{
     checkLargeStraight(hand)
     checkFullHouse(hand)
+    checkSmallStraight(hand)
 })
 
 // Check Large Straight
@@ -164,5 +165,11 @@ function checkFullHouse(hand) {
 
 // Check Small Straight
 function checkSmallStraight(hand) {
-
+    if (hand.includes(1) && hand.includes(2) && hand.includes(3) && hand.includes(4)) {
+        console.log('You got a Small Straight')
+    } else if (hand.includes(2) && hand.includes(3) && hand.includes(4) && hand.includes(5)) {
+        console.log('You got a Small Straight')
+    } else if (hand.includes(3) && hand.includes(4) && hand.includes(5) && hand.includes(6)) {
+        console.log('You got a Small Straight')
+    }
 }
