@@ -2,6 +2,7 @@
 let board = []
 let hand = []
 let rollCount = 0
+let sum = 0
 
 const scoreCardUpperSection = [
     {
@@ -57,6 +58,10 @@ const scoreCardLowerSection = [
     }
 ]
 
+const availableHands = []
+
+const selectedHands = []
+
 // Roll Die Function
 function rollDie(){
     let value = Math.floor(Math.random() * 6) + 1;
@@ -77,7 +82,10 @@ function displayDie(value){
             hand.push(value)
         }
         hand.sort()
-        console.log(hand)
+        // console.log(hand)
+        const sum = hand.reduce((a,b)=> a + b)
+        console.log(sum)
+        return sum
     })
     document.querySelector('#content').appendChild(face)
 }
@@ -97,6 +105,7 @@ document.querySelector('#first-roll').addEventListener('click', () => {
     document.querySelector('#content').innerHTML = ''
     board = []
     hand = []
+    rollCount = 0
     for(let i = 0; i < 5; i++){
         let value = rollDie()
         board.push(value)
@@ -121,6 +130,25 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
     console.log(rollCount)
 })
 
+// Check Score Button
+document.querySelector('#score-points').addEventListener('click', ()=>{
+    checkLargeStraight(hand)
+})
+
+function arrayEquals(hand, largeStraight) {
+    return Array.isArray(hand) &&
+        Array.isArray(largeStraight) &&
+        hand.length === largeStraight.length &&
+        hand.every((val, index) => val === largeStraight[index]);
+}
+
+function checkLargeStraight(hand){
+    let largeStraight1 = [1,2,3,4,5]
+    let largeStraight2 = [2,3,4,5,6]
+    if(arrayEquals(hand, largeStraight1) || arrayEquals(hand, largeStraight2)) {
+        console.log('You win')
+    }
+}
 
 // if(i = i++){
     
