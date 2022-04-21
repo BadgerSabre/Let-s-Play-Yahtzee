@@ -4,6 +4,13 @@ let hand = []
 let rollCount = 0
 let sum = 0
 let playerScore = 0
+let onesScore = 0
+let twosScore = 0
+let threesScore = 0
+let foursScore = 0
+let fivesScore = 0
+let sixesScore = 0
+let bonusPoints = 0
 
 const scoreCardUpperSection = [
     {
@@ -137,6 +144,8 @@ document.querySelector('#score-points').addEventListener('click', ()=>{
     checkFullHouse(hand)
     checkSmallStraight(hand)
     checkYahtzee(hand)
+    checkBonusPoints()
+    updateUpperSection()
 })
 
 // Comparative Arrays Helper Function
@@ -191,4 +200,99 @@ function checkYahtzee(hand) {
             console.log('You got a Yahtzee')
         }
     })
+}
+
+// Check and Score Ones
+document.querySelector('#score-ones').addEventListener('click', function displayOnes() {
+    hand.forEach(item => {
+        if(item === 1){
+            onesScore++
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-ones').textContent = onesScore
+    document.querySelector('#score-ones').removeEventListener('click', displayOnes)
+    return onesScore
+})
+
+// Check and Score Twos
+document.querySelector('#score-twos').addEventListener('click', function displayTwos() {
+    hand.forEach(item => {
+        if(item === 2){
+            twosScore = twosScore + 2
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-twos').textContent = twosScore
+    document.querySelector('#score-twos').removeEventListener('click', displayTwos)
+    return twosScore
+})
+
+// Check and Score Threes
+document.querySelector('#score-threes').addEventListener('click', function displayThrees() {
+    hand.forEach(item => {
+        if(item === 3){
+            threesScore = threesScore + 3
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-threes').textContent = threesScore
+    document.querySelector('#score-threes').removeEventListener('click', displayThrees)
+    return threesScore
+})
+
+// Check and Score Fours
+document.querySelector('#score-fours').addEventListener('click', function displayFours() {
+    hand.forEach(item => {
+        if(item === 4){
+            foursScore = foursScore + 4
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-fours').textContent = foursScore
+    document.querySelector('#score-fours').removeEventListener('click', displayFours)
+    return foursScore
+})
+
+// Check and Score Fives
+document.querySelector('#score-fives').addEventListener('click', function displayFives() {
+    hand.forEach(item => {
+        if(item === 5){
+            fivesScore = fivesScore + 5
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-fives').textContent = fivesScore
+    document.querySelector('#score-fives').removeEventListener('click', displayFives)
+    return fivesScore
+})
+
+// Check and Score Sixes
+document.querySelector('#score-sixes').addEventListener('click', function displaySixes() {
+    hand.forEach(item => {
+        if(item === 6){
+            sixesScore = sixesScore + 6
+        }
+    })
+    updateUpperSection()
+    document.querySelector('#score-sixes').textContent = sixesScore
+    document.querySelector('#score-sixes').removeEventListener('click', displaySixes)
+    return sixesScore
+})
+
+// Check Bonus Points
+function checkBonusPoints() {
+    let upperSection = onesScore + twosScore + threesScore + foursScore + fivesScore + sixesScore
+    if(upperSection >= 63){
+        bonusPoints = bonusPoints + 35
+        document.querySelector('#bonus-points').textContent = bonusPoints
+    } else {
+        document.querySelector('#bonus-points').textContent = 0
+    }
+}
+
+// Calculate Upper Section Total
+function updateUpperSection() {
+    let upperSectionTotal = onesScore + twosScore + threesScore + foursScore + fivesScore + sixesScore + bonusPoints
+    document.querySelector('#upper-section-total').textContent = upperSectionTotal
 }
