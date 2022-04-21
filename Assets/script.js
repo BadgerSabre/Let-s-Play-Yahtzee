@@ -124,7 +124,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    rollCount++
+    // rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
@@ -161,7 +161,7 @@ function checkFullHouse(hand) {
     let arr1 = hand.filter(num => num === hand[0])
     let arr2 = hand.filter(num => num === hand[4])
     if(arr1.length === 2 && arr2.length === 3 || arr1.length === 3 && arr2.length === 2){
-        console.log('You got a FullHouse')
+        console.log('You got a Full House')
     }
 }
 
