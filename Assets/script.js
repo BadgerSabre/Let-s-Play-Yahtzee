@@ -131,7 +131,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    // rollCount++
+    rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
