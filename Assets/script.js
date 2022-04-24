@@ -131,7 +131,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    rollCount++
+    // rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
@@ -209,8 +209,9 @@ document.querySelector('#score-ones').addEventListener('click', function display
             onesScore++
         }
     })
-    updateUpperSection()
     document.querySelector('#score-ones').textContent = onesScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-ones').removeEventListener('click', displayOnes)
     return onesScore
 })
@@ -222,8 +223,9 @@ document.querySelector('#score-twos').addEventListener('click', function display
             twosScore = twosScore + 2
         }
     })
-    updateUpperSection()
     document.querySelector('#score-twos').textContent = twosScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-twos').removeEventListener('click', displayTwos)
     return twosScore
 })
@@ -235,8 +237,9 @@ document.querySelector('#score-threes').addEventListener('click', function displ
             threesScore = threesScore + 3
         }
     })
-    updateUpperSection()
     document.querySelector('#score-threes').textContent = threesScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-threes').removeEventListener('click', displayThrees)
     return threesScore
 })
@@ -248,8 +251,9 @@ document.querySelector('#score-fours').addEventListener('click', function displa
             foursScore = foursScore + 4
         }
     })
-    updateUpperSection()
     document.querySelector('#score-fours').textContent = foursScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-fours').removeEventListener('click', displayFours)
     return foursScore
 })
@@ -261,8 +265,9 @@ document.querySelector('#score-fives').addEventListener('click', function displa
             fivesScore = fivesScore + 5
         }
     })
-    updateUpperSection()
     document.querySelector('#score-fives').textContent = fivesScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-fives').removeEventListener('click', displayFives)
     return fivesScore
 })
@@ -274,8 +279,9 @@ document.querySelector('#score-sixes').addEventListener('click', function displa
             sixesScore = sixesScore + 6
         }
     })
-    updateUpperSection()
     document.querySelector('#score-sixes').textContent = sixesScore
+    checkBonusPoints()
+    updateUpperSection()
     document.querySelector('#score-sixes').removeEventListener('click', displaySixes)
     return sixesScore
 })
@@ -284,7 +290,7 @@ document.querySelector('#score-sixes').addEventListener('click', function displa
 function checkBonusPoints() {
     let upperSection = onesScore + twosScore + threesScore + foursScore + fivesScore + sixesScore
     if(upperSection >= 63){
-        bonusPoints = bonusPoints + 35
+        bonusPoints = 35
         document.querySelector('#bonus-points').textContent = bonusPoints
     } else {
         document.querySelector('#bonus-points').textContent = 0
