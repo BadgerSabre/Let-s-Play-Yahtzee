@@ -149,12 +149,14 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
 
 // Check Score Button
 document.querySelector('#score-points').addEventListener('click', ()=>{
-    checkLargeStraight(hand)
-    checkFullHouse(hand)
-    checkSmallStraight(hand)
-    checkYahtzee(hand)
-    checkBonusPoints()
-    updateUpperSection()
+    // checkLargeStraight(hand)
+    // checkFullHouse(hand)
+    // checkSmallStraight(hand)
+    // checkYahtzee(hand)
+    // checkBonusPoints()
+    // updateUpperSection()
+    // findDuplicates(hand)
+    checkThreeOfAKind(hand)
 })
 
 // Comparative Arrays Helper Function
@@ -164,6 +166,50 @@ function arrayEquals(hand, value) {
     hand.length === value.length &&
     hand.every((val, index) => val === value[index]);
 }
+
+// Find Duplicates Helper Function
+function findDuplicates(hand) {
+    let duplicates = hand.filter((item, index) => hand.indexOf(item) !== index)
+    return duplicates
+    // console.log(duplicates)
+}
+
+// Check 4 of a Kind
+function checkFourOfAKind(hand) {
+    let duplicates = findDuplicates(hand)
+    if(duplicates.length >= 3) {
+        fourOfAKind = sum
+    }
+    document.querySelector('#four-of-a-kind').textContent = fourOfAKind
+    console.log(fourOfAKind)
+    return fourOfAKind
+}
+
+document.querySelector('#four-of-a-kind').addEventListener('click', function displayFourOfAKind () {
+    checkFourOfAKind(hand)
+    updateLowerSection()
+    document.querySelector('#four-of-a-kind').removeEventListener('click', displayFourOfAKind)
+    return fourOfAKind
+})
+
+// Check 3 of a Kind
+function checkThreeOfAKind(hand) {
+    let duplicates = findDuplicates(hand)
+    console.log(duplicates)
+    if(duplicates.length >= 2) {
+        threeOfAKind = sum
+    }
+    document.querySelector('#three-of-a-kind').textContent = threeOfAKind
+    console.log(threeOfAKind)
+    return threeOfAKind
+}
+
+document.querySelector('#three-of-a-kind').addEventListener('click', function displayThreeOfAKind () {
+    checkThreeOfAKind(hand)
+    updateLowerSection()
+    document.querySelector('#three-of-a-kind').removeEventListener('click', displayThreeOfAKind)
+    return threeOfAKind
+})
 
 // Check Large Straight
 function checkLargeStraight(hand) {
