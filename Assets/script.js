@@ -100,7 +100,7 @@ function displayDie(value){
         }
         hand.sort()
         console.log(hand)
-        const sum = hand.reduce((a,b)=> a + b)
+        sum = hand.reduce((a,b)=> a + b)
         console.log(sum)
         return sum
     })
@@ -140,7 +140,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         board.push(value)
     }
     console.log(board)
-    rollCount++
+    // rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
@@ -242,11 +242,21 @@ function checkYahtzee(hand) {
     })
 }
 
+
 document.querySelector('#yahtzee').addEventListener('click', function displayYahtzee() {
     checkYahtzee(hand)
     updateLowerSection()
     document.querySelector('#yahtzee').removeEventListener('click', displayYahtzee)
     return yahtzeeScore
+})
+
+// Check Chance
+document.querySelector('#chance').addEventListener('click', function displayChance () {
+    chance = sum
+    document.querySelector('#chance').textContent = chance
+    updateLowerSection()
+    document.querySelector('#chance').removeEventListener('click', displayChance)
+    return chance
 })
 
 // Check and Score Ones
