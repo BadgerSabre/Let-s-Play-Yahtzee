@@ -3,7 +3,6 @@ let board = []
 let hand = []
 let rollCount = 0
 let sum = 0
-let playerScore = 0
 let onesScore = 0
 let twosScore = 0
 let threesScore = 0
@@ -20,64 +19,7 @@ let largeStraight = 0
 let yahtzeeScore = 0
 let chance = 0
 let lowerSectionTotal = 0
-
-const scoreCardUpperSection = [
-    {
-        name: 'Ones',
-        value: ''
-    },
-    {
-        name: 'Twos',
-        value: ''
-    },
-    {
-        name: 'Threes',
-        value: ''
-    },
-    {
-        name: 'Fours',
-        value: ''
-    },
-    {
-        name: 'Fives',
-        value: ''
-    },
-    {
-        name: 'Sixes',
-        value: ''
-    },
-    {
-        name: 'Bonus',
-        value: 35
-    }
-]
-
-const scoreCardLowerSection = [
-    {
-        name: 'Fullhouse',
-        value: 25
-    },
-    {
-        name: 'Yahtzee',
-        value: 50
-    },
-    {
-        name: 'Large Staight',
-        value: 40
-    },
-    {
-        name: 'Small Straight',
-        value: 30
-    },
-    {
-        name: 'Full House',
-        value: 25
-    }
-]
-
-const availableHands = []
-
-const selectedHands = []
+let totalScore = 0
 
 // Roll Die Function
 function rollDie(){
@@ -99,9 +41,7 @@ function displayDie(value){
             hand.push(value)
         }
         hand.sort()
-        console.log(hand)
         sum = hand.reduce((a,b)=> a + b)
-        console.log(sum)
         return sum
     })
     document.querySelector('#content').appendChild(face)
@@ -127,7 +67,6 @@ document.querySelector('#first-roll').addEventListener('click', () => {
         let value = rollDie()
         board.push(value)
     }
-    console.log(board)
     document.querySelector('#roll-again').disabled = false
 })
 
@@ -139,24 +78,10 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         let value = rollDie()
         board.push(value)
     }
-    console.log(board)
     rollCount++
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
-    console.log(rollCount)
-})
-
-// Check Score Button
-document.querySelector('#score-points').addEventListener('click', ()=>{
-    // checkLargeStraight(hand)
-    // checkFullHouse(hand)
-    // checkSmallStraight(hand)
-    // checkYahtzee(hand)
-    // checkBonusPoints()
-    // updateUpperSection()
-    // findDuplicates(hand)
-    checkThreeOfAKind(hand)
 })
 
 // Comparative Arrays Helper Function
@@ -171,7 +96,6 @@ function arrayEquals(hand, value) {
 function findDuplicates(hand) {
     let duplicates = hand.filter((item, index) => hand.indexOf(item) !== index)
     return duplicates
-    // console.log(duplicates)
 }
 
 // Check 4 of a Kind
@@ -188,6 +112,7 @@ function checkFourOfAKind(hand) {
 document.querySelector('#four-of-a-kind').addEventListener('click', function displayFourOfAKind () {
     checkFourOfAKind(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#four-of-a-kind').removeEventListener('click', displayFourOfAKind)
     return fourOfAKind
 })
@@ -195,18 +120,17 @@ document.querySelector('#four-of-a-kind').addEventListener('click', function dis
 // Check 3 of a Kind
 function checkThreeOfAKind(hand) {
     let duplicates = findDuplicates(hand)
-    console.log(duplicates)
     if(duplicates.length >= 2) {
         threeOfAKind = sum
     }
     document.querySelector('#three-of-a-kind').textContent = threeOfAKind
-    console.log(threeOfAKind)
     return threeOfAKind
 }
 
 document.querySelector('#three-of-a-kind').addEventListener('click', function displayThreeOfAKind () {
     checkThreeOfAKind(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#three-of-a-kind').removeEventListener('click', displayThreeOfAKind)
     return threeOfAKind
 })
@@ -225,6 +149,7 @@ function checkLargeStraight(hand) {
 document.querySelector('#LG-straight').addEventListener('click', function displayLargeStraight() {
     checkLargeStraight(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#LG-straight').removeEventListener('click', displayLargeStraight)
     return largeStraight
 })
@@ -234,7 +159,6 @@ function checkFullHouse(hand) {
     let arr1 = hand.filter(num => num === hand[0])
     let arr2 = hand.filter(num => num === hand[4])
     if(arr1.length === 2 && arr2.length === 3 || arr1.length === 3 && arr2.length === 2){
-        console.log('You got a Full House')
         fullHouse = 25
     }
     document.querySelector('#fullhouse').textContent = fullHouse
@@ -244,6 +168,7 @@ function checkFullHouse(hand) {
 document.querySelector('#fullhouse').addEventListener('click', function displayFullHouse() {
     checkFullHouse(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#fullhouse').removeEventListener('click', displayFullHouse)
     return fullHouse
 })
@@ -264,6 +189,7 @@ function checkSmallStraight(hand) {
 document.querySelector('#SM-straight').addEventListener('click', function displaySmallStraight() {
     checkSmallStraight(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#SM-straight').removeEventListener('click', displaySmallStraight)
     return smallStraight
 })
@@ -281,7 +207,6 @@ function checkYahtzee(hand) {
     yahtzees.forEach(yahtzee => {
         if(arrayEquals(hand, yahtzee)){
             yahtzeeScore = 50
-            console.log('You got a Yahtzee')
         } 
         document.querySelector('#yahtzee').textContent = yahtzeeScore
         return yahtzeeScore
@@ -292,6 +217,7 @@ function checkYahtzee(hand) {
 document.querySelector('#yahtzee').addEventListener('click', function displayYahtzee() {
     checkYahtzee(hand)
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#yahtzee').removeEventListener('click', displayYahtzee)
     return yahtzeeScore
 })
@@ -301,6 +227,7 @@ document.querySelector('#chance').addEventListener('click', function displayChan
     chance = sum
     document.querySelector('#chance').textContent = chance
     updateLowerSection()
+    updateTotalScore()
     document.querySelector('#chance').removeEventListener('click', displayChance)
     return chance
 })
@@ -315,6 +242,7 @@ document.querySelector('#score-ones').addEventListener('click', function display
     document.querySelector('#score-ones').textContent = onesScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-ones').removeEventListener('click', displayOnes)
     return onesScore
 })
@@ -329,6 +257,7 @@ document.querySelector('#score-twos').addEventListener('click', function display
     document.querySelector('#score-twos').textContent = twosScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-twos').removeEventListener('click', displayTwos)
     return twosScore
 })
@@ -343,6 +272,7 @@ document.querySelector('#score-threes').addEventListener('click', function displ
     document.querySelector('#score-threes').textContent = threesScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-threes').removeEventListener('click', displayThrees)
     return threesScore
 })
@@ -357,6 +287,7 @@ document.querySelector('#score-fours').addEventListener('click', function displa
     document.querySelector('#score-fours').textContent = foursScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-fours').removeEventListener('click', displayFours)
     return foursScore
 })
@@ -371,6 +302,7 @@ document.querySelector('#score-fives').addEventListener('click', function displa
     document.querySelector('#score-fives').textContent = fivesScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-fives').removeEventListener('click', displayFives)
     return fivesScore
 })
@@ -385,6 +317,7 @@ document.querySelector('#score-sixes').addEventListener('click', function displa
     document.querySelector('#score-sixes').textContent = sixesScore
     checkBonusPoints()
     updateUpperSection()
+    updateTotalScore()
     document.querySelector('#score-sixes').removeEventListener('click', displaySixes)
     return sixesScore
 })
@@ -407,9 +340,23 @@ function updateUpperSection() {
     return upperSectionTotal
 }
 
-// Caluculate Lower Section Total
+// Calculate Lower Section Total
 function updateLowerSection() {
     let lowerSectionTotal = threeOfAKind + fourOfAKind + fullHouse + smallStraight + largeStraight + yahtzeeScore + chance
     document.querySelector('#lower-section-total').textContent = lowerSectionTotal
     return lowerSectionTotal
 }
+
+// Calculate Total Score
+function updateTotalScore() {
+    let upperSectionTotal = onesScore + twosScore + threesScore + foursScore + fivesScore + sixesScore + bonusPoints
+    let lowerSectionTotal = threeOfAKind + fourOfAKind + fullHouse + smallStraight + largeStraight + yahtzeeScore + chance
+    let totalScore = upperSectionTotal + lowerSectionTotal
+    document.querySelector('#total-score').textContent = totalScore
+    return totalScore
+}
+
+// Play Again Btn
+document.querySelector('#play-again').addEventListener('click', () => {
+    window.location.reload()
+})
