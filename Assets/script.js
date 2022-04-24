@@ -170,9 +170,18 @@ function checkLargeStraight(hand) {
     let largeStraight1 = [1,2,3,4,5]
     let largeStraight2 = [2,3,4,5,6]
     if(arrayEquals(hand, largeStraight1) || arrayEquals(hand, largeStraight2)) {
-        console.log('You got a Large Straight')
+        largeStraight = 40
     }
+    document.querySelector('#LG-straight').textContent = largeStraight
+    return largeStraight
 }
+
+document.querySelector('#LG-straight').addEventListener('click', function displayLargeStraight() {
+    checkLargeStraight(hand)
+    updateLowerSection()
+    document.querySelector('#LG-straight').removeEventListener('click', displayLargeStraight)
+    return largeStraight
+})
 
 // Check Full House
 function checkFullHouse(hand) {
@@ -180,26 +189,33 @@ function checkFullHouse(hand) {
     let arr2 = hand.filter(num => num === hand[4])
     if(arr1.length === 2 && arr2.length === 3 || arr1.length === 3 && arr2.length === 2){
         console.log('You got a Full House')
+        fullHouse = 25
     }
+    document.querySelector('#fullhouse').textContent = fullHouse
+    return fullHouse
 }
+
+document.querySelector('#fullhouse').addEventListener('click', function displayFullHouse() {
+    checkFullHouse(hand)
+    updateLowerSection()
+    document.querySelector('#fullhouse').removeEventListener('click', displayFullHouse)
+    return fullHouse
+})
 
 // Check Small Straight
 function checkSmallStraight(hand) {
     if (hand.includes(1) && hand.includes(2) && hand.includes(3) && hand.includes(4)) {
         smallStraight = 30
-        console.log('You got a Small Straight')
     } else if (hand.includes(2) && hand.includes(3) && hand.includes(4) && hand.includes(5)) {
         smallStraight = 30
-        console.log('You got a Small Straight')
     } else if (hand.includes(3) && hand.includes(4) && hand.includes(5) && hand.includes(6)) {
         smallStraight = 30
-        console.log('You got a Small Straight')
     }
     document.querySelector('#SM-straight').textContent = smallStraight
     return smallStraight
 }
 
-document.querySelector('#SM-straight').addEventListener('click', function displaySmallStraight () {
+document.querySelector('#SM-straight').addEventListener('click', function displaySmallStraight() {
     checkSmallStraight(hand)
     updateLowerSection()
     document.querySelector('#SM-straight').removeEventListener('click', displaySmallStraight)
@@ -226,7 +242,7 @@ function checkYahtzee(hand) {
     })
 }
 
-document.querySelector('#yahtzee').addEventListener('click', function displayYahtzee () {
+document.querySelector('#yahtzee').addEventListener('click', function displayYahtzee() {
     checkYahtzee(hand)
     updateLowerSection()
     document.querySelector('#yahtzee').removeEventListener('click', displayYahtzee)
