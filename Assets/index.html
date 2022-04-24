@@ -11,111 +11,115 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="buttons">
-        <button id="first-roll">First Roll</button>
-        <button id="roll-again">Roll Again</button>
-        <button id="play-again">Play Again</button>
-    </div>
-    <div id="content">
-    </div>
-    <table class="table table-hover">
-        <thead>
-          <tr class="table-active">
-            <th scope="col">Upper Section</th>
-            <th scope="col">Scoring</th>
-            <th scope="col">Player Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">Ones</td>
-            <td>Count and add only Ones</td>
-            <td id="score-ones"></td>
-          </tr>
-          <tr>
-            <td scope="row">Twos</td>
-            <td>Count and add only Twos</td>
-            <td id="score-twos"></td>
-          </tr>
-          <tr>
-            <td scope="row">Threes</td>
-            <td>Count and add only Threes</td>
-            <td id="score-threes"></td>
-          </tr>
-          <tr>
-            <td scope="row">Fours</td>
-            <td>Count and add only Fours</td>
-            <td id="score-fours"></td>
-          </tr>
-          <tr>
-            <td scope="row">Fives</td>
-            <td>Count and add only Fives</td>
-            <td id="score-fives"></td>
-          </tr>
-          <tr>
-            <td scope="row">Sixes</td>
-            <td>Count and add only Sixes</td>
-            <td id="score-sixes"></td>
-          </tr>
-          <tr>
-            <td scope="row">Bonus</td>
-            <td>If upper section score is 63 or more</td>
-            <td id="bonus-points"></td>
-          </tr>
-          <tr>
-            <td scope="row">Upper Section Total</td>
-            <td></td>
-            <td id="upper-section-total"></td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row" colspan="3">Lower Section</th>
-          </tr>
-          <tr>
-            <td scope="row">3 of a Kind</td>
-            <td>Add total of all dice</td>
-            <td id="three-of-a-kind"></td>
-          </tr>
-          <tr>
-            <td scope="row">4 of a Kind</td>
-            <td>Add total of all dice</td>
-            <td id="four-of-a-kind"></td>
-          </tr>
-          <tr>
-            <td scope="row">Full House</td>
-            <td>Score 25</td>
-            <td id="fullhouse"></td>
-          </tr>
-          <tr>
-            <td scope="row">SM Straight</td>
-            <td>Score 30</td>
-            <td id="SM-straight"></td>
-          </tr>
-          <tr>
-            <td scope="row">LG Straight</td>
-            <td>Score 40</td>
-            <td id="LG-straight"></td>
-          </tr>
-          <tr>
-            <td scope="row">Yahtzee</td>
-            <td>Score 50</td>
-            <td id="yahtzee"></td>
-          </tr>
-          <tr>
-            <td scope="row">Chance</td>
-            <td>Add total of all dice</td>
-            <td id="chance"></td>
-          </tr>
-          <tr>
-            <td scope="row">Lower Section Total</td>
-            <td></td>
-            <td id="lower-section-total"></td>
-          </tr>
-          <tr class="table-active">
-            <th scope="row">Total Score</th>
-            <td></td>
-            <td id="total-score"></td>
-          </tr>
-        </tbody>
+  <div id="score-card">
+    <table class="table table-hover table-light">
+          <thead>
+            <tr class="table-active">
+              <th scope="col">Upper Section</th>
+              <th scope="col">Scoring</th>
+              <th scope="col">Player Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">Ones</td>
+              <td>Count and add only Ones</td>
+              <td id="score-ones"></td>
+            </tr>
+            <tr>
+              <td scope="row">Twos</td>
+              <td>Count and add only Twos</td>
+              <td id="score-twos"></td>
+            </tr>
+            <tr>
+              <td scope="row">Threes</td>
+              <td>Count and add only Threes</td>
+              <td id="score-threes"></td>
+            </tr>
+            <tr>
+              <td scope="row">Fours</td>
+              <td>Count and add only Fours</td>
+              <td id="score-fours"></td>
+            </tr>
+            <tr>
+              <td scope="row">Fives</td>
+              <td>Count and add only Fives</td>
+              <td id="score-fives"></td>
+            </tr>
+            <tr>
+              <td scope="row">Sixes</td>
+              <td>Count and add only Sixes</td>
+              <td id="score-sixes"></td>
+            </tr>
+            <tr>
+              <td scope="row">Bonus</td>
+              <td>If upper section score is 63 or more</td>
+              <td id="bonus-points"></td>
+            </tr>
+            <tr>
+              <td scope="row">Upper Section Total</td>
+              <td></td>
+              <td id="upper-section-total"></td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row" colspan="3">Lower Section</th>
+            </tr>
+            <tr>
+              <td scope="row">3 of a Kind</td>
+              <td>Add total of all dice</td>
+              <td id="three-of-a-kind"></td>
+            </tr>
+            <tr>
+              <td scope="row">4 of a Kind</td>
+              <td>Add total of all dice</td>
+              <td id="four-of-a-kind"></td>
+            </tr>
+            <tr>
+              <td scope="row">Full House</td>
+              <td>Score 25</td>
+              <td id="fullhouse"></td>
+            </tr>
+            <tr>
+              <td scope="row">SM Straight</td>
+              <td>Score 30</td>
+              <td id="SM-straight"></td>
+            </tr>
+            <tr>
+              <td scope="row">LG Straight</td>
+              <td>Score 40</td>
+              <td id="LG-straight"></td>
+            </tr>
+            <tr>
+              <td scope="row">Yahtzee</td>
+              <td>Score 50</td>
+              <td id="yahtzee"></td>
+            </tr>
+            <tr>
+              <td scope="row">Chance</td>
+              <td>Add total of all dice</td>
+              <td id="chance"></td>
+            </tr>
+            <tr>
+              <td scope="row">Lower Section Total</td>
+              <td></td>
+              <td id="lower-section-total"></td>
+            </tr>
+            <tr class="table-active">
+              <th scope="row">Total Score</th>
+              <td></td>
+              <td id="total-score"></td>
+            </tr>
+          </tbody>
     </table>
+  </div>
+  <div id="btns-dice">
+    <div id="buttons">
+      <button type="button" class="btn btn-success" id="first-roll">First Roll</button>
+      <button type="button" class="btn btn-primary" id="roll-again">Roll Again</button>
+      <button type="button" class="btn btn-danger" id="play-again">Play Again</button>
+    </div>
+      <div id="content">
+    </div>
+  </div>
 </body>
 </html>

@@ -1,3 +1,29 @@
 img {
     width: 100px;
 }
+
+.table {
+    width: 800px;
+    z-index: 1;
+    margin: 50px;
+    border: black 5px solid;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background: linear-gradient(90deg, #3AC2F8 0%, #6097BE 35%, #C7DFC5 100%);
+    justify-content: space-around;
+}
+
+#btns-dice {
+    border: 2px solid red;
+    max-width: 600px;
+    padding-top: 50px;
+}
+
+#score-card {
+    border: 2px solid red;
+    max-width: 900px;
+}
