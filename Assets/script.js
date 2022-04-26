@@ -40,6 +40,7 @@ function displayDie(value){
             face.style.border = '1px solid red'
             hand.push(value)
         }
+        if(!hand.length) return
         hand.sort()
         sum = hand.reduce((a,b)=> a + b)
         return sum

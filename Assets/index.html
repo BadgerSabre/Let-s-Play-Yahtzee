@@ -9,53 +9,73 @@
     <link href="style.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script defer src="script.js"></script>
-</head>
-<body>
-  <div id="score-card">
-    <table class="table table-hover table-light">
-          <thead>
-            <tr class="table-active">
-              <th scope="col">Upper Section</th>
-              <th scope="col">Scoring</th>
-              <th scope="col">Player Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td scope="row">Ones</td>
-              <td>Count and add only Ones</td>
-              <td id="score-ones"></td>
-            </tr>
-            <tr>
-              <td scope="row">Twos</td>
-              <td>Count and add only Twos</td>
-              <td id="score-twos"></td>
-            </tr>
-            <tr>
-              <td scope="row">Threes</td>
-              <td>Count and add only Threes</td>
-              <td id="score-threes"></td>
-            </tr>
-            <tr>
-              <td scope="row">Fours</td>
-              <td>Count and add only Fours</td>
-              <td id="score-fours"></td>
-            </tr>
-            <tr>
-              <td scope="row">Fives</td>
-              <td>Count and add only Fives</td>
-              <td id="score-fives"></td>
-            </tr>
-            <tr>
-              <td scope="row">Sixes</td>
-              <td>Count and add only Sixes</td>
-              <td id="score-sixes"></td>
-            </tr>
-            <tr>
-              <td scope="row">Bonus</td>
-              <td>If upper section score is 63 or more</td>
-              <td id="bonus-points"></td>
-            </tr>
+  </head>
+  <body>
+    <div id="btns-dice">
+      <h1>Let's Play Yahtzee</h1>
+      <div id="buttons">
+      <button type="button" class="btn btn-success" id="first-roll">First Roll</button>
+      <button type="button" class="btn btn-primary" id="roll-again">Roll Again</button>
+      <button type="button" class="btn btn-danger" id="play-again">Play Again</button>
+    </div>
+      <div id="content">
+      </div>
+      <div id="instructions">
+        <h3>How to Play:</h3>
+        <ul>
+          <li>Start the game by clicking the "First Roll" button.</li>
+          <li>Click on any dice that you want to keep in your hand.  Dice in your hand will be highlighed.  Highlighted dice can be clicked again to be removed from your hand.</li>
+          <li>You can click the "Roll Again" button to re roll any dice not in your hand up to two times, for a total of three rolls.</li>
+          <li>To score points click on any row in the "Player Score" column of the score card.</li>
+          <li>Click the "Play Again" button reset your score card and start a new game.  Good luck!</li>
+        </ul>
+      </div>
+    </div>
+    <div id="score-card">
+      <table class="table table-hover table-light">
+        <thead>
+          <tr class="table-active">
+            <th scope="col">Upper Section</th>
+            <th scope="col">Scoring</th>
+            <th scope="col">Player Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row">Ones</td>
+            <td>Count and add only Ones</td>
+          <td id="score-ones"></td>
+        </tr>
+        <tr>
+          <td scope="row">Twos</td>
+          <td>Count and add only Twos</td>
+          <td id="score-twos"></td>
+        </tr>
+        <tr>
+          <td scope="row">Threes</td>
+          <td>Count and add only Threes</td>
+          <td id="score-threes"></td>
+        </tr>
+        <tr>
+          <td scope="row">Fours</td>
+          <td>Count and add only Fours</td>
+          <td id="score-fours"></td>
+        </tr>
+        <tr>
+          <td scope="row">Fives</td>
+          <td>Count and add only Fives</td>
+          <td id="score-fives"></td>
+        </tr>
+        <tr>
+          <td scope="row">Sixes</td>
+          <td>Count and add only Sixes</td>
+          <td id="score-sixes"></td>
+        </tr>
+        <tr>
+          <td scope="row">Bonus</td>
+          <td>If upper section score is 63 or more</td>
+          <td id="bonus-points"></td>
+        </tr>
             <tr>
               <td scope="row">Upper Section Total</td>
               <td></td>
@@ -110,16 +130,7 @@
               <td id="total-score"></td>
             </tr>
           </tbody>
-    </table>
-  </div>
-  <div id="btns-dice">
-    <div id="buttons">
-      <button type="button" class="btn btn-success" id="first-roll">First Roll</button>
-      <button type="button" class="btn btn-primary" id="roll-again">Roll Again</button>
-      <button type="button" class="btn btn-danger" id="play-again">Play Again</button>
-    </div>
-      <div id="content">
-    </div>
-  </div>
-</body>
-</html>
+        </table>
+      </div>
+    </body>
+    </html>
