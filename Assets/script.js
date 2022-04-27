@@ -31,13 +31,14 @@ function rollDie(){
 // Display Die and Add Style to Selected Die
 function displayDie(value){
     let face = document.createElement('img')
-    face.src = `../images/Dice${value}.png`
+    face.src = `../Media/Dice${value}.png`
     face.addEventListener('click', () => {
-        if(face.style.border === '1px solid red') {
+        if(face.style.border === '4px solid black') {
             face.style.border = ''
             hand.splice(hand.indexOf(value), 1)
         } else {
-            face.style.border = '1px solid red'
+            face.style.border = '4px solid black'
+            face.style.borderRadius = '5px'
             hand.push(value)
         }
         if(!hand.length) return
