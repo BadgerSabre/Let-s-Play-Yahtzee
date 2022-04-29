@@ -29,13 +29,6 @@ body {
     max-width: 900px;
 }
 
-#instructions {
-    /* border: 2px solid red;  */
-    max-width: 600px;
-    margin-top: 300px;
-    position: fixed;
-}
-
 #content {
     margin-top: 100px;
     position: fixed;
@@ -53,6 +46,12 @@ img {
 
 #buttons {
     padding-left: 20px;
+}
+
+#secondary-buttons {
+    /* border: 2px solid red; */
+    padding-left: 190px;
+    padding-top: 300px;
 }
 
 h1 {

@@ -22,15 +22,33 @@
       </div>
       <div id="content">
       </div>
-      <div id="instructions">
-        <h3>How to Play:</h3>
-        <ul>
-          <li class="h5">Start the game by clicking the "First Roll" button.</li>
-          <li class="h5">Click on any dice that you want to keep in your hand.  Dice in your hand will be highlighed.  Highlighted dice can be clicked again to be removed from your hand.</li>
-          <li class="h5">You can click the "Roll Again" button to re roll any dice not in your hand up to two times, for a total of three rolls.</li>
-          <li class="h5">To score points click on any row in the "Player Score" column of the score card.</li>
-          <li class="h5">Click the "Play Again" button reset your score card and start a new game.  Good luck!</li>
-        </ul>
+      <div id="secondary-buttons">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">How to Play</button>
+        <button type="button" class="btn btn-primary" id="play-music">Toggle Music</button>
+      </div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">How to Play:</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="instructions">
+                <ul>
+                  <li class="h6">Start the game by clicking the "First Roll" button.</li>
+                  <li class="h6">Click on any dice that you want to keep in your hand.  Dice in your hand will be highlighed.  Highlighted dice can be clicked again to be removed from your hand.</li>
+                  <li class="h6">You can click the "Roll Again" button to re roll any dice not in your hand up to two times, for a total of three rolls.</li>
+                  <li class="h6">To score points click on any row in the "Player Score" column of the score card.</li>
+                  <li class="h6">Click the "Play Again" button reset your score card and start a new game.  Good luck!</li>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div id="score-card">

@@ -1,4 +1,6 @@
 // Variables
+let dieRollAudio = new Audio('../Media/die_roll.mp3');
+let music = 0
 let board = []
 let hand = []
 let rollCount = 0
@@ -61,6 +63,7 @@ function clearBoard(){
 
 // First Roll Button
 document.querySelector('#first-roll').addEventListener('click', () => {
+    dieRollAudio.play()
     document.querySelector('#content').innerHTML = ''
     board = []
     hand = []
@@ -74,6 +77,7 @@ document.querySelector('#first-roll').addEventListener('click', () => {
 
 // Roll Again Button
 document.querySelector('#roll-again').addEventListener('click', ()=>{
+    dieRollAudio.play()
     board = []
     clearBoard()
     for(let i = 0; i < 5 - hand.length; i++){
@@ -361,4 +365,15 @@ function updateTotalScore() {
 // Play Again Btn
 document.querySelector('#play-again').addEventListener('click', () => {
     window.location.reload()
+})
+
+// Play Music Btn
+document.querySelector('#play-music').addEventListener('click', () => {
+    if(music === 0){
+        music = new Audio('../Media/both-of-us-14037.mp3')
+        music.play()
+    } else {
+        music.pause()
+        music = 0
+    }
 })
