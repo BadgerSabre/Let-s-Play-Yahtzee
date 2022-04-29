@@ -1,5 +1,5 @@
 // Variables
-let dieRollAudio = new Audio('../Media/die_roll.mp3');
+let dieRollAudio = new Audio('./Media/die_roll.mp3');
 let music = 0
 let board = []
 let hand = []
@@ -33,7 +33,7 @@ function rollDie(){
 // Display Die and Add Style to Selected Die
 function displayDie(value){
     let face = document.createElement('img')
-    face.src = `../Media/Dice${value}.png`
+    face.src = `./Media/Dice${value}.png`
     face.addEventListener('click', () => {
         if(face.style.border === '4px solid black') {
             face.style.border = ''
@@ -370,7 +370,7 @@ document.querySelector('#play-again').addEventListener('click', () => {
 // Play Music Btn
 document.querySelector('#play-music').addEventListener('click', () => {
     if(music === 0){
-        music = new Audio('../Media/both-of-us-14037.mp3')
+        music = new Audio('./Media/both-of-us-14037.mp3')
         music.play()
     } else {
         music.pause()
