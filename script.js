@@ -3,6 +3,7 @@ let dieRollAudio = new Audio('./Media/die_roll.mp3');
 let music = 0
 let board = []
 let hand = []
+let allDice = []
 let rollCount = 0
 let sum = 0
 let onesScore = 0
@@ -88,6 +89,8 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
+    allDice = hand.push(...board)
+    console.log(allDice)
 })
 
 // Comparative Arrays Helper Function
