@@ -3,6 +3,7 @@ let dieRollAudio = new Audio('./Media/die_roll.mp3');
 let music = 0
 let board = []
 let hand = []
+// New Code here
 let allDice = []
 let rollCount = 0
 let sum = 0
@@ -89,6 +90,7 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
     if(rollCount > 1){
         document.querySelector('#roll-again').disabled = true
     }
+    //New Code here
     allDice = hand.push(...board)
     console.log(allDice)
 })
