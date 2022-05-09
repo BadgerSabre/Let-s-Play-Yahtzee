@@ -4,7 +4,7 @@ let music = 0
 let board = []
 let hand = []
 // New Code here
-let allDice = []
+let allDice = board.concat(hand)
 let rollCount = 0
 let sum = 0
 let onesScore = 0
@@ -47,8 +47,8 @@ function displayDie(value){
         }
         if(!hand.length) return
         hand.sort()
-        sum = hand.reduce((a,b)=> a + b)
-        return sum
+        // sum = allDice.reduce((a,b)=> a + b)
+        // return sum
     })
     document.querySelector('#content').appendChild(face)
 }
@@ -75,6 +75,12 @@ document.querySelector('#first-roll').addEventListener('click', () => {
         board.push(value)
     }
     document.querySelector('#roll-again').disabled = false
+    let allDice = board.concat(hand)
+    allDice.sort()
+    console.log(allDice)
+        sum = allDice.reduce((a,b)=> a + b)
+        console.log(sum)
+        return sum
 })
 
 // Roll Again Button
@@ -91,8 +97,12 @@ document.querySelector('#roll-again').addEventListener('click', ()=>{
         document.querySelector('#roll-again').disabled = true
     }
     //New Code here
-    allDice = hand.push(...board)
+    let allDice = board.concat(hand)
+    allDice.sort()
     console.log(allDice)
+        sum = allDice.reduce((a,b)=> a + b)
+        console.log(sum)
+        return sum
 })
 
 // Comparative Arrays Helper Function
@@ -129,8 +139,9 @@ document.querySelector('#four-of-a-kind').addEventListener('click', function dis
 })
 
 // Check 3 of a Kind
-function checkThreeOfAKind(hand) {
-    let duplicates = findDuplicates(hand)
+function checkThreeOfAKind(allDice) {
+    let duplicates = findDuplicates(allDice)
+    console.log(allDice)
     if(duplicates.length >= 2) {
         threeOfAKind = sum
     }
@@ -139,7 +150,7 @@ function checkThreeOfAKind(hand) {
 }
 
 document.querySelector('#three-of-a-kind').addEventListener('click', function displayThreeOfAKind () {
-    checkThreeOfAKind(hand)
+    checkThreeOfAKind(allDice)
     updateLowerSection()
     updateTotalScore()
     document.querySelector('#three-of-a-kind').removeEventListener('click', displayThreeOfAKind)
