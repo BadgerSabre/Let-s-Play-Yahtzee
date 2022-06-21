@@ -14,7 +14,8 @@ There is a "How to Play" button that will give the following instructions:
     Click the "Play Again" button reset your score card and start a new game.
 
 ## Known Bugs
-Users must select all dice before scoring 
+Users must select all dice before scoring
+ 
 Media queries must be added for mobile support
 
 ## Credits
